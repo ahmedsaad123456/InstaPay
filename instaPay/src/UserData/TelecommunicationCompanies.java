@@ -1,14 +1,14 @@
 package UserData;
 
-public class TelecommunicationCompanies extends Wallet{
+public class TelecommunicationCompanies extends Wallet {
 
     String telecomProviderName;
 
-    public TelecommunicationCompanies(String telecomProviderName){
+    public TelecommunicationCompanies(String telecomProviderName) {
         this.telecomProviderName = telecomProviderName;
     }
 
-    public String getTelecomProviderName(){
+    public String getTelecomProviderName() {
         return telecomProviderName;
     }
 
@@ -17,17 +17,19 @@ public class TelecommunicationCompanies extends Wallet{
 //    }
 
     @Override
-    public  boolean withdraw(double amount){
+    public boolean withdraw(double amount) {
         //        BankBalance -= amount;
         // return true;
         return true;
     }
-    public  boolean deposit(double amount){
+
+    public boolean deposit(double amount) {
         //        BankBalance += amount;
         //return true;
         return true;
     }
-    public  double inquireBalance(String mobileNumber){
+
+    public double inquireBalance(String mobileNumber) {
         // I should send this account number to bank api and bank api return the balance of this account number
         // and I store it in BankBalance here
 
@@ -36,5 +38,24 @@ public class TelecommunicationCompanies extends Wallet{
 
         return 0.0;
     }
-
 }
+//
+//public class TelecommunicationCompanies extends Wallet {
+//    private String telecomProvider;
+//
+//    @Override
+//    public double inquireBalance() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public boolean withdraw() {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean deposit() {
+//        return false;
+//    }
+//
+//}

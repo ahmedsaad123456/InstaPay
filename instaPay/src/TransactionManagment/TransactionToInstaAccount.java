@@ -1,4 +1,10 @@
 package TransactionManagment;
 
-public class TransactionToInstaAccount extends Transaction{
+import UserData.User;
+
+public class TransactionToInstaAccount extends Transaction {
+    public boolean tranfer(String instaAccount, User user[]) {
+        return false;
+    }
+
 }

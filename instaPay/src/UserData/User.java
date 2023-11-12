@@ -18,33 +18,56 @@ abstract class User {
     }
 
     String username;
-    public String getUsername() {return username;}
 
-    public void setUsername(String username) {this.username = username;}
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
 
     String password;
-    public String getPassword() {return password;}
 
-    public void setPassword(String password) {this.password = password;}
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
 
     String mobileNumber;
-    public String getMobileNumber() {return mobileNumber;}
 
-    public void setMobileNumber(String mobileNumber) {this.mobileNumber = mobileNumber;}
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
 
 
     String email;
-    public String getEmail() {return email;}
 
-    public void setEmail(String email) {this.email = email;}
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
 
     String instapayAcoountName;
-    public String getInstapayAcoountName() {return instapayAcoountName;}
 
-    public void setInstapayAcoountName(String instapayAcoountName) {this.instapayAcoountName = instapayAcoountName;}
+    public String getInstapayAcoountName() {
+        return instapayAcoountName;
+    }
 
-
+    public void setInstapayAcoountName(String instapayAcoountName) {
+        this.instapayAcoountName = instapayAcoountName;
+    }
 }

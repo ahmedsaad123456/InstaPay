@@ -1,6 +1,5 @@
 package UserData;
 
-
 public class ElectronicPaymentCompanies extends Wallet{
     String paymentCompanyName;
 
@@ -37,5 +36,4 @@ public class ElectronicPaymentCompanies extends Wallet{
 
         return 0.0;
     }
-
 }

@@ -1,5 +1,4 @@
 package UserData;
-
 import UserAuthentication.BankAPI;
 import UserAuthentication.WalletAPI;
 
@@ -44,8 +43,6 @@ abstract class Wallet {
     //WalletAPI wAPI = new WalletAPI(String mobileNumber);
     //balance = wAPI.getBalance();
     //  return walletBalance;
-
-
 
 
 }

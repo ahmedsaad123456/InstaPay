@@ -36,5 +36,4 @@ public class BanksProvideWallets extends Wallet{
 
         return 0.0;
     }
-
 }

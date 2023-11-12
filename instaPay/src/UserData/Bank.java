@@ -3,6 +3,7 @@ package UserData;
 import UserAuthentication.BankAPI;
 
 public class Bank {
+
     String BankAccountNumber;
     public String getBankAccountNumber() {return BankAccountNumber;}
 
@@ -59,7 +60,5 @@ public class Bank {
         //BankBalance = bAPI.getBalance();
         return BankBalance;
     }
-
-
 
 }
