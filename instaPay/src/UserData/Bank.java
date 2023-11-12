@@ -1,9 +1,8 @@
 package UserData;
 
-public class Bank {
+public class Bank extends Account{
     private String bankAccountNumber;
     private String name;
-    private double balance;
     private String branchName;
 
     public double inquireBalance() {
@@ -16,5 +15,9 @@ public class Bank {
 
     public boolean deposit() {
         return false;
+    }
+
+    public String getBankAccountNumber() {
+        return bankAccountNumber;
     }
 }
