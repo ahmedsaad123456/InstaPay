@@ -1,4 +1,5 @@
 package UserData;
 
-public class BankUser extends User{
+public class BankUser extends User {
+    private Bank account;
 }

@@ -1,4 +1,10 @@
 package TransactionManagment;
 
-public class TransactionToBank extends Transaction{
+import UserData.User;
+
+public class TransactionToBank extends Transaction {
+
+    public boolean tranfer(String bankNumber, User user[]) {
+        return false;
+    }
 }
