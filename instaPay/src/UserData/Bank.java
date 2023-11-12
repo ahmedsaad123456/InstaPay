@@ -4,29 +4,6 @@ import UserAuthentication.BankAPI;
 
 public class Bank {
 
-    String BankAccountNumber;
-    public String getBankAccountNumber() {return BankAccountNumber;}
-
-    public void setBankAccountNumber(String bankAccountNumber) {BankAccountNumber = bankAccountNumber;}
-
-
-    String BankName;
-    public String getBankName() {return BankName;}
-
-    public void setBankName(String bankName) {BankName = bankName;}
-
-
-    String BranchName;
-    public String getBranchName() {return BranchName;}
-
-    public void setBranchName(String branchName) {BranchName = branchName;}
-
-
-    double BankBalance;
-    public double getBankBalance() {return BankBalance;} // inquire about balance
-
-    public void setBankBalance(double bankBalance) {BankBalance = bankBalance;}
-
     public Bank() {
         BankAccountNumber = "";
         BankName = "";
@@ -34,12 +11,43 @@ public class Bank {
         BankBalance = 0.0;
     }
 
+    //------------------------------------------------------------------------------------------------------------------
+
     public Bank(String BankAccountNumber, String BankName, String BranchName, double BankBalance) {
         this.BankAccountNumber = BankAccountNumber;
         this.BankName = BankName;
         this.BranchName = BranchName;
         this.BankBalance = BankBalance;
     }
+
+    //------------------------------------------------------------------------------------------------------------------
+    
+    String BankAccountNumber;
+    public String getBankAccountNumber() {return BankAccountNumber;}
+
+    public void setBankAccountNumber(String bankAccountNumber) {BankAccountNumber = bankAccountNumber;}
+
+    //------------------------------------------------------------------------------------------------------------------
+    String BankName;
+    public String getBankName() {return BankName;}
+
+    public void setBankName(String bankName) {BankName = bankName;}
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    String BranchName;
+    public String getBranchName() {return BranchName;}
+
+    public void setBranchName(String branchName) {BranchName = branchName;}
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    double BankBalance;
+    public double getBankBalance() {return BankBalance;} // inquire about balance
+
+    public void setBankBalance(double bankBalance) {BankBalance = bankBalance;}
+
+    //------------------------------------------------------------------------------------------------------------------
 
 //    public boolean deposit(double amount) {
 //        BankBalance += amount;

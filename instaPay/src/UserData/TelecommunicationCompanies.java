@@ -4,6 +4,8 @@ public class TelecommunicationCompanies extends Wallet {
 
     String telecomProviderName;
 
+    public TelecommunicationCompanies() {this.telecomProviderName = "";}
+
     public TelecommunicationCompanies(String telecomProviderName) {
         this.telecomProviderName = telecomProviderName;
     }

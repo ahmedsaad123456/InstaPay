@@ -4,6 +4,8 @@ public class BanksProvideWallets extends Wallet{
 
     String bankName;
 
+    public BanksProvideWallets() {this.bankName = "";}
+
     public BanksProvideWallets(String bankName){
         this.bankName = bankName;
     }

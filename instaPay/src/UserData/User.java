@@ -1,6 +1,6 @@
 package  UserData;
 
-abstract class User {
+public abstract class User {
     public User() {
         username = "";
         password = "";

@@ -3,9 +3,11 @@ package UserData;
 public class ElectronicPaymentCompanies extends Wallet{
     String paymentCompanyName;
 
+    public ElectronicPaymentCompanies() {this.paymentCompanyName = "";}
     public ElectronicPaymentCompanies(String paymentCompanyName) {
         this.paymentCompanyName = paymentCompanyName;
     }
+
 
     public String getPaymentCompanyName() {
         return paymentCompanyName;

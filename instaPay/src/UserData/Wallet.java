@@ -2,7 +2,7 @@ package UserData;
 import UserAuthentication.BankAPI;
 import UserAuthentication.WalletAPI;
 
-abstract class Wallet {
+public abstract class Wallet {
 
     public Wallet() {
         this.walletBalance = 0.0;
