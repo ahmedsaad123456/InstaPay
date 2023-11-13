@@ -14,21 +14,28 @@ public class Verification {
      * check if the username is unique of not
      *
      * @param username is username input form the user
-     * @param users is the whole users in the system
      * @return true if username is unique otherwise false
      */
-    public boolean verifyUsername(String username , User users[])
+    public boolean verifyUsername(String username)
     {
 
-        for(int i= 0 ; i<users.length ; i++){
-//            if(username.equals(user[i].getUserName())){
-//                return false;
-//            }
-
-        }
+        // UserDB UDB;
+        //return UDB.uniqueUsername(username);
         return true;
     }
+    /**
+     * check if the instaAccount is unique of not
+     *
+     * @param instaAccount is username input form the user
+     * @return true if instaAccount is unique otherwise false
+     */
+    public boolean verifyInstaAccount(String instaAccount)
+    {
 
+        // UserDB UDB;
+        //return UDB.uniqueInstaAccount(instaAccount);
+        return true;
+    }
     /**
      * check if the password is valid or not
      *
