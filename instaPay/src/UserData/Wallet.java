@@ -1,6 +1,4 @@
 package UserData;
-import UserAuthentication.BankAPI;
-import UserAuthentication.WalletAPI;
 
 public abstract class Wallet implements Account{
 
