@@ -84,7 +84,7 @@ abstract class Registration {
 
         }
 
-        userData.setInstapayAcoountName(instaAccount);
+        userData.setInstapayAcoount(instaAccount);
 
 
         specificSignUp(userData);
