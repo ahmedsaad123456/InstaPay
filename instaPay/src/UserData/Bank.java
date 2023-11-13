@@ -3,42 +3,22 @@ package UserData;
 public abstract class Bank implements Account {
 
     String BankAccountNumber;
-    String BankName;
-    String BranchName;
 
     public Bank() {
         BankAccountNumber = "";
-        BankName = "";
-        BranchName = "";
     }
 
     //------------------------------------------------------------------------------------------------------------------
 
-    public Bank(String BankAccountNumber, String BankName, String BranchName) {
+    public Bank(String BankAccountNumber) {
         this.BankAccountNumber = BankAccountNumber;
-        this.BankName = BankName;
-        this.BranchName = BranchName;
     }
-
-
-
+    
     //------------------------------------------------------------------------------------------------------------------
 
     public String getBankAccountNumber() {return BankAccountNumber;}
 
     public void setBankAccountNumber(String bankAccountNumber) {BankAccountNumber = bankAccountNumber;}
-
-    //------------------------------------------------------------------------------------------------------------------
-    public String getBankName() {return BankName;}
-
-    public void setBankName(String bankName) {BankName = bankName;}
-
-    //------------------------------------------------------------------------------------------------------------------
-
-    public String getBranchName() {return BranchName;}
-
-    public void setBranchName(String branchName) {BranchName = branchName;}
-
 
     //-----------------------------------------------------------------------------------------------------------------
 
