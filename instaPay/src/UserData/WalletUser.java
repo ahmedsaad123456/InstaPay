@@ -1,5 +1,11 @@
 package UserData;
 
 public class WalletUser extends User {
-    private Wallet account;
+    public WalletUser() {
+        super();
+    }
+
+    public WalletUser(String username, String password, String mobileNumber, String instapayAcoountName) {
+        super(username, password, mobileNumber, instapayAcoountName);
+    }
 }
