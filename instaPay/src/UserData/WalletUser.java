@@ -5,7 +5,7 @@ public class WalletUser extends User {
         super();
     }
 
-    public WalletUser(String username, String password, String mobileNumber, String instapayAcoountName) {
-        super(username, password, mobileNumber, instapayAcoountName);
+    public WalletUser(String username, String password, String mobileNumber, String instapayAcoountName, Account acc) {
+        super(username, password, mobileNumber, instapayAcoountName, acc);
     }
 }
