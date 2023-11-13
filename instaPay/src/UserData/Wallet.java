@@ -2,42 +2,51 @@ package UserData;
 import UserAuthentication.BankAPI;
 import UserAuthentication.WalletAPI;
 
-public abstract class Wallet {
+public abstract class Wallet implements Account{
+
+    String walletName;
 
     public Wallet() {
-        this.walletBalance = 0.0;
-//        this.walletName = "";
+        walletName = "";
     }
-
-    public Wallet(double balance) {
-        this.walletBalance = balance;
-        //this.walletName = walletName;
+    public Wallet(String walletName) {
+        this.walletName = walletName;
     }
 
 
+    public String getWalletName() {return walletName;}
 
-//    String walletName;
-//    public String getWalletName() {
-//        return walletName;
-//    }
-//
-//    public void setWalletName(String walletName) {
-//        this.walletName = walletName;
-//    }
+    public void setWalletName(String walletName) {this.walletName = walletName;}
 
-    double walletBalance;
-    public double getBalance() {
-        return walletBalance;
+
+    //  the following functions are not competed yet
+
+    @Override
+    public double inquireBalance() {  // need api
+        // I should send this account number to bank api and bank api return the balance of this account number
+        // and I store it in BankBalance here
+
+        // BankAPI bAPI = new BankAPI(String BAccountNumber);
+        //BankBalance = bAPI.getBalance();
+        return 0;
     }
 
-    public void setBalance(double balance) {
-        this.walletBalance = balance;
+    @Override
+    public boolean withdraw(double amount) { // need api
+        //        BankBalance -= amount;
+//        return true;
+        return false;
     }
 
-    public abstract boolean withdraw(double amount);
-    public abstract boolean deposit(double amount);
+    @Override
+    public boolean deposit(double amount) { // need api
+        //        BankBalance += amount;
+//        return true;
 
-    public abstract double inquireBalance(String mobileNumber);
+
+
+        return false;
+    }
 
 
     //WalletAPI wAPI = new WalletAPI(String mobileNumber);
