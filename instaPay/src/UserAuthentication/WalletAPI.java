@@ -5,18 +5,28 @@ import UserData.Wallet;
 
 public class WalletAPI {
     private static double balance = 10000;
+    String url;
+
+    WalletAPI(String u){
+        url = u;
+    }
 
 
-    public double inquireBalance(){
+    public void setURL(String u){
+        url = u;
+    }
+
+
+    public double inquireBalance(int mobileNumber){
         return balance;
     }
 
-    public boolean verifyBank(String mobile, String bankNum){
+    public boolean verifyMobileNumber(String mobile, String bankNum){
 
         return true;
     }
 
-    public boolean withdraw(double b){
+    public boolean withdraw(double b , int mobileNumber){
         if(b>balance){
             return false;
         }
@@ -24,7 +34,7 @@ public class WalletAPI {
         return true;
     }
 
-    public void deposite(double b){
+    public void deposite(double b , int mobileNumber){
         balance = balance +b;
     }
 }
