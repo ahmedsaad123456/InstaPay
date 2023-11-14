@@ -13,10 +13,21 @@ public class AlahlyBank extends Bank {
     }
 
     @Override
+    public boolean verifyAccount() {
+
+        BankAPI bankAPI = new BankAPI("https://alahlyapi.service.com/");
+        if (bankAPI.verifyBank(this.getBankAccountNumber(), this.getMobileNumber())) {
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
     public double inquireBalance() {
 
         BankAPI bankAPI = new BankAPI("https://alahlyapi.service.com/");
-        return bankAPI.inquireBalance(this.getBankAccountNumber(),this.user.getMobileNumber());
+        return bankAPI.inquireBalance(this.getBankAccountNumber(),this.getMobileNumber());
 
     }
 
@@ -24,7 +35,7 @@ public class AlahlyBank extends Bank {
     public boolean withdraw(double amount) {
 
         BankAPI bankAPI = new BankAPI("https://alahlyapi.service.com/");
-        if (bankAPI.withdraw(amount, this.getBankAccountNumber(), this.user.getMobileNumber())) {
+        if (bankAPI.withdraw(amount, this.getBankAccountNumber(),this.getMobileNumber())) {
             return true;
 
         }
@@ -35,7 +46,7 @@ public class AlahlyBank extends Bank {
     public void deposit( double amount){
 
         BankAPI bankAPI = new BankAPI("https://alahlyapi.service.com/");
-        bankAPI.deposite(amount, this.getBankAccountNumber(), this.user.getMobileNumber());
+        bankAPI.deposite(amount, this.getBankAccountNumber(),this.getMobileNumber());
     }
 
 }

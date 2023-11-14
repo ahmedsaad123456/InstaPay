@@ -1,11 +1,16 @@
 package  UserData;
 
+import BillManagment.Bill;
+
+import java.util.ArrayList;
+
 public class User {
     private Account account;
     private String username;
     private String password;
     private String mobileNumber;
     private String instapayAcoount;
+
 
     public User() {
         username = "";
