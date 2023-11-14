@@ -6,7 +6,7 @@ public class BankAPI {
     private static double balance = 10000;
     String url;
 
-    BankAPI(String u){
+    public BankAPI(String u){
         url = u;
     }
 
@@ -16,7 +16,7 @@ public class BankAPI {
     }
 
 
-    public double inquireBalance(int bankNumber){
+    public double inquireBalance(String bankNumber, String mobile){
         return balance;
     }
 
@@ -25,7 +25,7 @@ public class BankAPI {
         return true;
     }
 
-    public boolean withdraw(double b , int bankNumber){
+    public boolean withdraw(double b , String bankNumber, String mobile){
         if(b>balance){
             return false;
         }
@@ -33,7 +33,7 @@ public class BankAPI {
         return true;
     }
 
-    public void deposite(double b , int bankNumber){
+    public void deposite(double b , String bankNumber, String mobile){
         balance = balance +b;
     }
 

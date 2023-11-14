@@ -10,4 +10,5 @@ public class BankUser extends User {
     public BankUser(String username, String password, String mobileNumber, String instapayAcoountName, Account acc) {
         super(username, password, mobileNumber, instapayAcoountName, acc);
     }
+
 }
