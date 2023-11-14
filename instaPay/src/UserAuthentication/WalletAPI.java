@@ -7,7 +7,7 @@ public class WalletAPI {
     private static double balance = 10000;
     String url;
 
-    WalletAPI(String u){
+    public WalletAPI(String u){
         url = u;
     }
 
@@ -17,7 +17,7 @@ public class WalletAPI {
     }
 
 
-    public double inquireBalance(int mobileNumber){
+    public double inquireBalance(String mobileNumber){
         return balance;
     }
 
@@ -26,7 +26,7 @@ public class WalletAPI {
         return true;
     }
 
-    public boolean withdraw(double b , int mobileNumber){
+    public boolean withdraw(double b , String mobileNumber){
         if(b>balance){
             return false;
         }
@@ -34,7 +34,7 @@ public class WalletAPI {
         return true;
     }
 
-    public void deposite(double b , int mobileNumber){
+    public void deposite(double b , String mobileNumber){
         balance = balance +b;
     }
 }

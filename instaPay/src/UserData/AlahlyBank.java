@@ -1,35 +1,41 @@
 package UserData;
 
-public class AlahlyBank extends Bank{
+import UserAuthentication.BankAPI;
+
+public class AlahlyBank extends Bank {
 
     public AlahlyBank() {
         super();
     }
 
-    public AlahlyBank(String BankAccountNumber, String BankName, String BranchName) {
-        super(BankAccountNumber, BankName, BranchName);
+    public AlahlyBank(String BankAccountNumber) {
+        super(BankAccountNumber);
     }
 
     @Override
-    public double inquireBalance() { // need api
+    public double inquireBalance() {
 
-        // I should send this account number to bank api and bank api return the balance of this account number
+        BankAPI bankAPI = new BankAPI("https://alahlyapi.service.com/");
+        return bankAPI.inquireBalance(this.getBankAccountNumber(),this.user.getMobileNumber());
 
-        return 0;
     }
 
-
     @Override
-    public boolean withdraw(double amount) {  // need api
-        //        BankBalance -= amount;
-        //     return true;
+    public boolean withdraw(double amount) {
+
+        BankAPI bankAPI = new BankAPI("https://alahlyapi.service.com/");
+        if (bankAPI.withdraw(amount, this.getBankAccountNumber(), this.user.getMobileNumber())) {
+            return true;
+
+        }
         return false;
     }
 
     @Override
-    public boolean deposit(double amount) { // need api
-        //        BankBalance += amount;
-        //        return true;
-        return false;
+    public void deposit( double amount){
+
+        BankAPI bankAPI = new BankAPI("https://alahlyapi.service.com/");
+        bankAPI.deposite(amount, this.getBankAccountNumber(), this.user.getMobileNumber());
     }
+
 }

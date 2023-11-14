@@ -1,8 +1,9 @@
 package UserData;
 
-public class TelecommunicationCompanies extends Wallet {
+import UserAuthentication.WalletAPI;
 
-    String telecomProviderName;
+public class TelecommunicationCompanies extends Wallet {
+    private String telecomProviderName;
 
     public TelecommunicationCompanies() {this.telecomProviderName = "";}
 
@@ -14,43 +15,37 @@ public class TelecommunicationCompanies extends Wallet {
         return telecomProviderName;
     }
 
-//    public void setTelecomProviderName(String telecomProviderName){
-//        this.telecomProviderName = telecomProviderName;
-//    }
-
-    //  the following functions are not competed yet
-
-    @Override
-    public double inquireBalance() {  // need api
-        // I should send this account number to bank api and bank api return the balance of this account number
-        // and I store it in BankBalance here
-
-        // BankAPI bAPI = new BankAPI(String BAccountNumber);
-        //BankBalance = bAPI.getBalance();
-        return 0;
+    public void setTelecomProviderName(String telecomProviderName){
+        this.telecomProviderName = telecomProviderName;
     }
 
     @Override
-    public boolean withdraw(double amount) { // need api
-        //        BankBalance -= amount;
-//        return true;
+    public double inquireBalance() {
+
+        String url="https://api-"+telecomProviderName+"-service.com/inquireBalance";
+        WalletAPI wAPI = new WalletAPI(url);
+        return wAPI.inquireBalance(this.user.getMobileNumber());
+    }
+
+    @Override
+    public boolean withdraw(double amount) {
+
+        String url="https://api-"+telecomProviderName+"-service.com/inquireBalance";
+        WalletAPI wAPI = new WalletAPI(url);
+        if(wAPI.withdraw(amount, this.user.getMobileNumber())){
+            return true;
+        }
+
         return false;
     }
 
     @Override
-    public boolean deposit(double amount) { // need api
-        //        BankBalance += amount;
-//        return true;
+    public void deposit(double amount) {
 
-
-
-        return false;
+        String url="https://api-"+telecomProviderName+"-service.com/inquireBalance";
+        WalletAPI wAPI = new WalletAPI(url);
+        wAPI.deposite(amount, this.user.getMobileNumber());
     }
-
-
-    //WalletAPI wAPI = new WalletAPI(String mobileNumber);
-    //balance = wAPI.getBalance();
-    //  return walletBalance;
 
 }
 

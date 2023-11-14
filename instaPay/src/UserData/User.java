@@ -1,11 +1,11 @@
 package  UserData;
 
-public abstract class User {
-    Account account;
-    String username;
-    String password;
-    String mobileNumber;
-    String instapayAcoount;
+public class User {
+    private Account account;
+    private String username;
+    private String password;
+    private String mobileNumber;
+    private String instapayAcoount;
 
     public User() {
         username = "";

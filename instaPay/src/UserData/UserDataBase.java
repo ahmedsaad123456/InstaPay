@@ -1,7 +1,6 @@
 package UserData;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class UserDataBase {
     private ArrayList<User> users;
