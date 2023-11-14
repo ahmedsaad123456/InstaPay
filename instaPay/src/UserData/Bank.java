@@ -15,13 +15,5 @@ public abstract class Bank implements Account {
 
     public void setBankAccountNumber(String bankAccountNumber) {BankAccountNumber = bankAccountNumber;}
 
-    @Override
-    public double inquireBalance() { return 0; }
-
-    @Override
-    public boolean withdraw(double amount) { return false; }
-
-    @Override
-    public void deposit(double amount) { }
 
 }
