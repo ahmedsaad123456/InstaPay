@@ -1,24 +1,46 @@
 package TransactionManagment;
 
-import UserData.User;
+import UserData.*;
+
+import java.util.Map;
+import java.util.Scanner;
 
 public class TransactionToWallet extends Transaction {
-    public boolean tranfer(String mobileNumber, User users[]) {
-        User receiverUser = search(mobileNumber, users);
-        if (receiverUser == null) {
-            throw new Error("receiver not in users");
-        }
-        senderUser.getAccount().withdraw();
-        receiverUser.getAccount().deposit();
-        return true;
+    public TransactionToWallet(User user, double amount) {
+        super(user, amount);
     }
 
-    public User search(String mobileNumber, User users[]) {
-        for (User user : users) {
-            if (user.getMobileNumber() == mobileNumber) {
-                return user;
-            }
+    private Account createAccount(String walletName, String mobileNumber) {
+        if(walletName == "Vodafone Cash"){
+            return new TelecommunicationCompanies(mobileNumber);
         }
-        return null;
+        else if(walletName == "Fawry Wallet"){
+            return new ElectronicPaymentCompanies(mobileNumber);
+        }
+        else if(walletName == "CIB Wallet"){
+            return new BanksProvideWallets(mobileNumber);
+        }
+        throw new Error("Invalid Wallet");
+    }
+
+    private boolean checkValidity(Account account) {
+//        if(account.checkAccount()){
+//            return true;
+//        }
+        return false;
+    }
+    public boolean transfer(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter wallet name: ");
+        String walletName = scanner.nextLine();
+        System.out.println("Please enter mobile number of the receiver: ");
+        String mobile = scanner.nextLine();
+        Account account = createAccount(walletName, mobile);
+        if(checkValidity(account)){
+            senderUser.getAccount().withdraw(amount);
+            account.deposit(amount);
+            return true;
+        }
+        return false;
     }
 }

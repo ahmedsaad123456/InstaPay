@@ -1,23 +1,34 @@
 package TransactionManagment;
 
-import UserData.User;
+import UserData.*;
+
+import java.util.Scanner;
 
 public class TransactionToInstaAccount extends Transaction {
-    public boolean tranfer(String instaAccount, User users[]) {
-        User receiverUser = search(instaAccount, users);
-        if (receiverUser == null) {
-            throw new Error("receiver not in users");
-        }
-        senderUser.getAccount().withdraw();
-        receiverUser.getAccount().deposit();
-        return true;
+    public TransactionToInstaAccount(User user, double amount) {
+        super(user, amount);
     }
-    public User search(String instaAccount, User users[]){
-        for (User user: users) {
-            if(user.getInstapayAccount() == instaAccount){
-                return user;
-            }
+
+    public boolean transfer(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter Instapay account of the receiver: ");
+        String instapayAccount = scanner.nextLine();
+        Account account = createAccount(instapayAccount);
+        if(checkValidity(account)){
+            senderUser.getAccount().withdraw(amount);
+            account.deposit(amount);
+            return true;
         }
-        return null;
+        return false;
+    }
+    private Account createAccount(String instapayAccount){
+
+        return new MisrBank();
+    }
+    private boolean checkValidity(Account account) {
+//        if(account.checkAccount()){
+//            return true;
+//        }
+        return false;
     }
 }
