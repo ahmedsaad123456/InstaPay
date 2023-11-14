@@ -87,13 +87,24 @@ abstract class Registration {
         userData.setInstapayAcoount(instaAccount);
 
 
-        specificSignUp(userData);
+
+        while (true){
+
+            if(!specificSignUp(userData)){
+                char c;
+                System.out.println("invaild information");
+                System.out.println("Do you want to enter again ? y/n");
+                c = in.next().charAt(0);
+                if(c != 'y'){
+                    return false;
+                }
+            }
+            else {
+                break;
+            }
 
 
-
-
-
-
+        }
 
 
         return true;
