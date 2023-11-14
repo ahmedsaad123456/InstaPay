@@ -25,6 +25,10 @@ public class WalletAPI {
 
         return true;
     }
+    public boolean verifyWallet(String mobileNumber){
+
+        return true;
+    }
 
     public boolean withdraw(double b , String mobileNumber){
         if(b>balance){

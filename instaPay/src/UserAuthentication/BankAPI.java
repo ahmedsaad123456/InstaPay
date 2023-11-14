@@ -25,6 +25,11 @@ public class BankAPI {
         return true;
     }
 
+    public boolean verifyBank(String bankNum){
+
+        return true;
+    }
+
     public boolean withdraw(double b , String bankNumber, String mobile){
         if(b>balance){
             return false;
