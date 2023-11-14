@@ -1,7 +1,7 @@
 package BillManagment;
 
 import UserData.User;
-abstract class Bill {
+public abstract class Bill {
     private double amount;
     private User user;
 

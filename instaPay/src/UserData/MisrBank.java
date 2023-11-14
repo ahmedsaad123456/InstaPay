@@ -15,14 +15,14 @@ public class MisrBank extends Bank{
     public double inquireBalance() {
 
         BankAPI bankAPI = new BankAPI("https://misrapi.service.com/");
-        return bankAPI.inquireBalance(this.getBankAccountNumber(),this.user.getMobileNumber());
+        return bankAPI.inquireBalance(this.getBankAccountNumber(),this.getMobileNumber());
     }
 
     @Override
     public boolean withdraw(double amount) {
 
         BankAPI bankAPI = new BankAPI("https://misrapi.service.com/");
-        if (bankAPI.withdraw(amount, this.getBankAccountNumber(), this.user.getMobileNumber())) {
+        if (bankAPI.withdraw(amount, this.getBankAccountNumber(), this.getMobileNumber())) {
             return true;
 
         }
@@ -33,7 +33,20 @@ public class MisrBank extends Bank{
     public void deposit( double amount){
 
         BankAPI bankAPI = new BankAPI("https://misrapi.service.com/");
-        bankAPI.deposite(amount, this.getBankAccountNumber(), this.user.getMobileNumber());
+        bankAPI.deposite(amount, this.getBankAccountNumber(), this.getMobileNumber());
+    }
+
+
+
+    @Override
+    public boolean verifyAccount() {
+
+        BankAPI bankAPI = new BankAPI("https://misrapi.service.com/");
+        if (bankAPI.verifyBank(this.getBankAccountNumber(), this.getMobileNumber())) {
+            return true;
+        }
+
+        return false;
     }
 
 }

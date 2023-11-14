@@ -19,14 +19,14 @@ public class BanksProvideWallets extends Wallet{
         String url="https://api-"+bankName+"-service.com/inquireBalance";
 
         WalletAPI wAPI = new WalletAPI(url);
-        return wAPI.inquireBalance(this.user.getMobileNumber());
+        return wAPI.inquireBalance(this.getMobileNumber());
     }
 
     @Override
     public boolean withdraw(double amount) {
         String url="https://api-"+bankName+"-service.com/inquireBalance";
         WalletAPI wAPI = new WalletAPI(url);
-        if(wAPI.withdraw(amount, this.user.getMobileNumber())){
+        if(wAPI.withdraw(amount, this.getMobileNumber())){
             return true;
         }
 
@@ -37,7 +37,18 @@ public class BanksProvideWallets extends Wallet{
     public void deposit(double amount) {
         String url="https://api-"+bankName+"-service.com/inquireBalance";
         WalletAPI wAPI = new WalletAPI(url);
-        wAPI.deposite(amount, this.user.getMobileNumber());
+        wAPI.deposite(amount, this.getMobileNumber());
+    }
+
+    @Override
+    public boolean verifyAccount() {
+
+        WalletAPI wAPI = new WalletAPI("https://api-"+bankName+"-service.com/");
+        if (wAPI.verifyWallet(this.getMobileNumber())) {
+            return true;
+        }
+
+        return false;
     }
 
 }

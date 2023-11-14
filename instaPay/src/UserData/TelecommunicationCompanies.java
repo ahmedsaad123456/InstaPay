@@ -24,7 +24,7 @@ public class TelecommunicationCompanies extends Wallet {
 
         String url="https://api-"+telecomProviderName+"-service.com/inquireBalance";
         WalletAPI wAPI = new WalletAPI(url);
-        return wAPI.inquireBalance(this.user.getMobileNumber());
+        return wAPI.inquireBalance(this.getMobileNumber());
     }
 
     @Override
@@ -32,7 +32,7 @@ public class TelecommunicationCompanies extends Wallet {
 
         String url="https://api-"+telecomProviderName+"-service.com/inquireBalance";
         WalletAPI wAPI = new WalletAPI(url);
-        if(wAPI.withdraw(amount, this.user.getMobileNumber())){
+        if(wAPI.withdraw(amount, this.getMobileNumber())){
             return true;
         }
 
@@ -44,7 +44,18 @@ public class TelecommunicationCompanies extends Wallet {
 
         String url="https://api-"+telecomProviderName+"-service.com/inquireBalance";
         WalletAPI wAPI = new WalletAPI(url);
-        wAPI.deposite(amount, this.user.getMobileNumber());
+        wAPI.deposite(amount, this.getMobileNumber());
+    }
+
+    @Override
+    public boolean verifyAccount() {
+
+        WalletAPI wAPI = new WalletAPI("https://api-"+telecomProviderName+"-service.com/");
+        if (wAPI.verifyWallet(this.getMobileNumber())) {
+            return true;
+        }
+
+        return false;
     }
 
 }
