@@ -1,11 +1,9 @@
 package UserData;
 
-abstract public class Account {
-    private double balance;
+public interface Account {
+    public User user = new User();
+    public  double inquireBalance();
+    public  boolean withdraw(double amount);
+    public  void deposit(double amount);
 
-    public abstract double inquireBalance();
-
-    public abstract boolean withdraw();
-
-    public abstract boolean deposit();
 }

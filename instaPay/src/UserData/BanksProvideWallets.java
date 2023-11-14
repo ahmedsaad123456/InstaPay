@@ -1,41 +1,43 @@
 package UserData;
 
-public class BanksProvideWallets extends Wallet{
+import UserAuthentication.WalletAPI;
 
-    String bankName;
+public class BanksProvideWallets extends Wallet{
+    private String bankName;
 
     public BanksProvideWallets() {this.bankName = "";}
 
-    public BanksProvideWallets(String bankName){
-        this.bankName = bankName;
-    }
+    public BanksProvideWallets(String bankName){this.bankName = bankName;}
 
-    public String getBankName(){
-        return bankName;
-    }
+    public String getBankName(){return bankName;}
 
-//    public void setBankName(String bankName){
-//        this.bankName = bankName;
-//    }
+    public void setBankName(String bankName){this.bankName = bankName;}
 
     @Override
-    public  boolean withdraw(double amount){
-        //        BankBalance -= amount;
-        // return true;
-        return true;
-    }
-    public  boolean deposit(double amount){
-        //        BankBalance += amount;
-        //return true;
-        return true;
-    }
-    public  double inquireBalance(String mobileNumber){
-        // I should send this account number to bank api and bank api return the balance of this account number
-        // and I store it in BankBalance here
+    public double inquireBalance() {
 
-        // WalletAPI wAPI = new WalletAPI(String mobileNumber);
-        //super.setBalance(wAPI.getBalance());
+        String url="https://api-"+bankName+"-service.com/inquireBalance";
 
-        return 0.0;
+        WalletAPI wAPI = new WalletAPI(url);
+        return wAPI.inquireBalance(this.user.getMobileNumber());
     }
+
+    @Override
+    public boolean withdraw(double amount) {
+        String url="https://api-"+bankName+"-service.com/inquireBalance";
+        WalletAPI wAPI = new WalletAPI(url);
+        if(wAPI.withdraw(amount, this.user.getMobileNumber())){
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public void deposit(double amount) {
+        String url="https://api-"+bankName+"-service.com/inquireBalance";
+        WalletAPI wAPI = new WalletAPI(url);
+        wAPI.deposite(amount, this.user.getMobileNumber());
+    }
+
 }

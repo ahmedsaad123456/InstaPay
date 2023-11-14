@@ -1,9 +1,14 @@
 package UserData;
 
-public class BankUser extends User {
-    private Bank account;
+import javax.management.remote.SubjectDelegationPermission;
 
-    public Bank getAccount() {
-        return account;
+public class BankUser extends User {
+    public BankUser() {
+        super();
     }
+
+    public BankUser(String username, String password, String mobileNumber, String instapayAcoountName, Account acc) {
+        super(username, password, mobileNumber, instapayAcoountName, acc);
+    }
+
 }
