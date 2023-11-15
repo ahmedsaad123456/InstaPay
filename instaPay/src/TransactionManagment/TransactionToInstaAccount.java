@@ -10,10 +10,11 @@ public class TransactionToInstaAccount extends Transaction {
     }
 
     public boolean transfer(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter Instapay account of the receiver: ");
-        String instapayAccount = scanner.nextLine();
-        Account account = createAccount(instapayAccount);
+        if(amount > senderUser.getAccount().inquireBalance()){
+            System.out.println("Insufficient balance");
+            return false;
+        }
+        Account account = createAccount();
         if(account!=null && account.verifyAccount()){
             senderUser.getAccount().withdraw(amount);
             account.deposit(amount);
@@ -22,7 +23,10 @@ public class TransactionToInstaAccount extends Transaction {
         System.out.println("Invalid account");
         return false;
     }
-    private Account createAccount(String instapayAccount){
+    private Account createAccount(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter Instapay account of the receiver: ");
+        String instapayAccount = scanner.nextLine();
         UserDataBase userDataBase = new UserDataBase();
         if(userDataBase.checkInstapayAccount(instapayAccount)){
             return userDataBase.getUserByInstaAccount(instapayAccount).getAccount();
