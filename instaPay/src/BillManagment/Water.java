@@ -1,6 +1,7 @@
 package BillManagment;
 
-import UserData.User;
+import API.GasBillAPI;
+import API.WaterBillAPI;
 public class Water extends Bill {
     private String waterProvider;
     private String meterSize;
@@ -15,7 +16,8 @@ public class Water extends Bill {
 
     @Override
     public void createBill() {
-        Water bill =  WaterBillAPI.getWaterBill();
+        WaterBillAPI waterBillAPI = new WaterBillAPI();
+        Water bill = waterBillAPI.getBill();
 
         System.out.println("Water bill created for user: " + getUser().getUsername());
         System.out.println("Amount: $" + bill.getAmount());

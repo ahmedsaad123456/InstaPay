@@ -1,17 +1,16 @@
-package BillManagment;
+package API;
 
-public class GasBillAPI {
-    static String url;
-    public GasBillAPI(String u) {
-        url = u;
-    }
+import BillManagment.Gas;
 
-    private static String callAPI() {
+public class GasBillAPI extends BillAPI{
+    @Override
+    public String callAPI() {
         // It will be replaced with actual data when perform Gas API using the URL
         // It might include making HTTP requests, parsing responses, etc.
         return "API Response for " + url;
     }
-    public static Gas getGasBill() {
+    @Override
+    public  Gas getBill() {
         String apiResponse = callAPI();
 
         //dummy data this data will replace with actual data when perform Gas API

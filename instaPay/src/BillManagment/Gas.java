@@ -1,6 +1,7 @@
 package BillManagment;
 
 import UserData.User;
+import API.GasBillAPI;
 
 public class Gas extends Bill {
 
@@ -19,7 +20,8 @@ public class Gas extends Bill {
 
     @Override
     public void createBill() {
-        Gas bill = GasBillAPI.getGasBill();
+        GasBillAPI gasBillAPI = new GasBillAPI();
+        Gas bill = gasBillAPI.getBill();
 
         System.out.println("Gas bill created for user: " + getUser().getUsername());
         System.out.println("Amount: $" + bill.getAmount());

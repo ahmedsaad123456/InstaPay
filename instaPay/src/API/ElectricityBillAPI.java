@@ -1,17 +1,16 @@
-package BillManagment;
+package API;
 
-public class ElectricityBillAPI {
-    static String url;
-    public ElectricityBillAPI(String u) {
-        url = u;
-    }
+import BillManagment.Electricity;
 
-    private static String callAPI() {
+public class ElectricityBillAPI extends BillAPI{
+    @Override
+    public String callAPI() {
         // It will be replaced with actual data when perform Electricity API using the URL
         // It might include making HTTP requests, parsing responses, etc.
         return "API Response for " + url;
     }
-    public static Electricity getElectricityBill() {
+    @Override
+    public  Electricity getBill() {
 
         String apiResponse = callAPI();
 

@@ -1,17 +1,15 @@
-package BillManagment;
+package API;
 
-public class WaterBillAPI {
-    static String url;
-    public WaterBillAPI(String u) {
-        url = u;
-    }
-
-    private static String callAPI() {
+import BillManagment.Water;
+public class WaterBillAPI extends BillAPI{
+    @Override
+    public String callAPI() {
         // It will be replaced with actual data when perform Water API using the URL
         // It might include making HTTP requests, parsing responses, etc.
         return "API Response for " + url;
     }
-    public static Water getWaterBill() {
+    @Override
+    public Water getBill() {
         String apiResponse = callAPI();
 
         //dummy data this data will replace with actual data when perform Water API

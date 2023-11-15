@@ -1,6 +1,7 @@
 package BillManagment;
 
 import UserData.User;
+import API.ElectricityBillAPI;
 
 public class Electricity extends Bill {
 
@@ -20,7 +21,8 @@ public class Electricity extends Bill {
 
     @Override
     public void createBill() {
-        Electricity bill = ElectricityBillAPI.getElectricityBill();
+        ElectricityBillAPI electricityBillAPI = new ElectricityBillAPI();
+        Electricity bill = electricityBillAPI.getBill();
 
         System.out.println("Electricity bill created for user: " + getUser().getUsername());
         System.out.println("Amount: $" + bill.getAmount());
