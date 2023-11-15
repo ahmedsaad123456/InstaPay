@@ -11,28 +11,23 @@ public class Login {
 
         UserDataBase db = new UserDataBase();
 
-        if(!db.checkUsername(username)){
-            System.out.println("invalid username");
+        if(!db.checkUsername(username)){//check if username exists
+            System.out.println("Username does not exist");
             return false;
         }
 
-        while(true){
+        while(true){//check if password is correct
             if(!db.checkPassword(username , password)){
                 char c;
 
                 System.out.println("invalid password");
-                System.out.println("Do you want to try again ? y/n");
                 c = in.next().charAt(0);
                 in.nextLine();
 
-                if(c != 'y'){
-                    return false;
-                }
             } else {
                 break;
             }
         }
-
 
         return true;
 
