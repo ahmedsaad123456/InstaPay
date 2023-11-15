@@ -30,6 +30,10 @@ public class TransactionToBank extends Transaction {
         return bank;
     }
     public boolean transfer(){
+        if(amount > senderUser.getAccount().inquireBalance()){
+            System.out.println("Insufficient balance");
+            return false;
+        }
         Account account = createAccount();
         if(account.verifyAccount()){
             senderUser.getAccount().withdraw(amount);
