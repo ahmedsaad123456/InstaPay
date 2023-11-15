@@ -12,13 +12,13 @@ public class TransactionToWallet extends Transaction {
     private Account createAccount(String walletName, String mobileNumber) {
         switch (walletName) {
             case "Vodafone Cash" -> {
-                return new TelecommunicationCompanies(mobileNumber);
+                return new VodafoneCashWallet(mobileNumber);
             }
             case "Fawry Wallet" -> {
-                return new ElectronicPaymentCompanies(mobileNumber);
+                return new FawryWallet(mobileNumber);
             }
             case "CIB Wallet" -> {
-                return new BanksProvideWallets(mobileNumber);
+                return new CIBWallet(mobileNumber);
             }
         }
         throw new Error("Invalid Wallet");
