@@ -12,7 +12,7 @@ public class TransactionToWallet extends Transaction {
 
     private Account createAccount() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the name of your provider from the following");
+        System.out.println("Enter the name of receiver's provider from the following");
         System.out.println("( Vodafone   ,  CIB   , Fawry  )");
         String WalletName = scanner.nextLine();
 
@@ -20,7 +20,7 @@ public class TransactionToWallet extends Transaction {
 
         if (wallet == null) {
             System.out.println("invalid provider name");
-            System.out.println("Enter the name of your provider from the following");
+            System.out.println("Enter the name of receiver's provider from the following");
             System.out.println("( Vodafone   ,  CIB   , Fawry  )");
             scanner.nextLine();
             wallet = new WalletFactory().createWallet(WalletName);

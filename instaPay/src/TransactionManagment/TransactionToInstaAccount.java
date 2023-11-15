@@ -14,7 +14,7 @@ public class TransactionToInstaAccount extends Transaction {
         System.out.println("Please enter Instapay account of the receiver: ");
         String instapayAccount = scanner.nextLine();
         Account account = createAccount(instapayAccount);
-        if(account.verifyAccount()){
+        if(account!=null && account.verifyAccount()){
             senderUser.getAccount().withdraw(amount);
             account.deposit(amount);
             return true;
@@ -23,6 +23,11 @@ public class TransactionToInstaAccount extends Transaction {
     }
     private Account createAccount(String instapayAccount){
         UserDataBase userDataBase = new UserDataBase();
-        return userDataBase.getUser(instapayAccount).getAccount();
+        if(userDataBase.checkInstapayAccount(instapayAccount)){
+            return userDataBase.getUserByInstaAccount(instapayAccount).getAccount();
+        }
+        else{
+            return null;
+        }
     }
 }

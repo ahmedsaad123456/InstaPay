@@ -3,7 +3,7 @@ package TransactionManagment;
 import UserData.Account;
 import UserData.User;
 
-abstract class Transaction {
+public abstract class Transaction {
     protected double amount;
     protected User senderUser;
     public Transaction(User user, double amount){

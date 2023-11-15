@@ -19,7 +19,7 @@ public class TransactionToBank extends Transaction {
 
         if (bank == null) {
             System.out.println("invalid provider name");
-            System.out.println("Enter the name of your provider from the following");
+            System.out.println("Enter the name of receiver's provider from the following");
             System.out.println("( Vodafone   ,  CIB   , Fawry  )");
             scanner.nextLine();
             bank = new BankFactory().createBank(bankName);

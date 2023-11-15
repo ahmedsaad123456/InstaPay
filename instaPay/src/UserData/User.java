@@ -49,10 +49,16 @@ public abstract class User {
     }
 
     public void loadProfile(){
+        System.out.println("----------------------------------------------------------------------------------------");
+        System.out.println("---Your Profile---");
         System.out.println("Username : "+ username);
         System.out.println("instapay Account : " + instapayAcoount);
         System.out.println("Mobile Number : " + getAccount().getMobileNumber());
         loadAccountProfile();
+        System.out.println("----------------------------------------------------------------------------------------");
+
     }
     public abstract void loadAccountProfile();
+
+    public abstract int loadTransactionMenu();
 }
