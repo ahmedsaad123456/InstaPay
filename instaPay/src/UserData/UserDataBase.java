@@ -5,7 +5,9 @@ import BillManagment.Bill;
 import java.util.ArrayList;
 
 public class UserDataBase {
-    private ArrayList<User> users;
+    private static ArrayList<User> users =  new ArrayList<>();
+
+
     public ArrayList<User> getUsers() {
         return users;
     }
@@ -25,7 +27,7 @@ public class UserDataBase {
 
     public boolean uniqueMobileNumber(String mobileNumber) {
         for (User user : users) {
-            if (user.getMobileNumber().equals(mobileNumber)) {
+            if (user.getAccount().getMobileNumber().equals(mobileNumber)) {
                 return false;
             }
         }
@@ -41,12 +43,9 @@ public class UserDataBase {
         return true;
     }
 
-    public boolean saveUser(User user) {
-        if (uniqueUsername(user.getUsername()) && uniqueMobileNumber(user.getMobileNumber()) && uniqueInstapayAccount(user.getInstapayAcoount())) {
-            users.add(user);
-            return true;
-        }
-        return false;
+    public void saveUser(User user)
+    {
+        users.add(user);
     }
 
     //------------------------------------------------------------------------------------
@@ -63,7 +62,6 @@ public class UserDataBase {
         for (User u : users) {
             if (u.getUsername().equals(user.getUsername())) {
                 u.setInstapayAcoount(user.getInstapayAcoount());
-                u.setMobileNumber(user.getMobileNumber());
                 u.setPassword(user.getPassword());
                 return true;
             }

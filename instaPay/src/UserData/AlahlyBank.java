@@ -1,22 +1,25 @@
 package UserData;
 
-import UserAuthentication.BankAPI;
+import API.AlahlyBankAPI;
+import API.BankAPI;
 
 public class AlahlyBank extends Bank {
 
+
     public AlahlyBank() {
-        super();
+        super(" " , "Alahly");
+        this.setBankAPI(new AlahlyBankAPI("https://alahlyapi.service.com/"));
     }
 
-    public AlahlyBank(String BankAccountNumber) {
-        super(BankAccountNumber);
+    public AlahlyBank(String bankAccountNumber) {
+        super(bankAccountNumber , "Alahly");
+        this.setBankAPI(new AlahlyBankAPI("https://alahlyapi.service.com/"));
     }
 
     @Override
     public boolean verifyAccount() {
 
-        BankAPI bankAPI = new BankAPI("https://alahlyapi.service.com/");
-        if (bankAPI.verifyBank(this.getBankAccountNumber(), this.getMobileNumber())) {
+        if (this.getBankAPI().verifyBank(this.getBankAccountNumber())) {
             return true;
         }
 
@@ -26,16 +29,14 @@ public class AlahlyBank extends Bank {
     @Override
     public double inquireBalance() {
 
-        BankAPI bankAPI = new BankAPI("https://alahlyapi.service.com/");
-        return bankAPI.inquireBalance(this.getBankAccountNumber(),this.getMobileNumber());
+        return this.getBankAPI().inquireBalance(this.getBankAccountNumber(),this.getMobileNumber());
 
     }
 
     @Override
     public boolean withdraw(double amount) {
 
-        BankAPI bankAPI = new BankAPI("https://alahlyapi.service.com/");
-        if (bankAPI.withdraw(amount, this.getBankAccountNumber(),this.getMobileNumber())) {
+        if (this.getBankAPI().withdraw(amount, this.getBankAccountNumber(),this.getMobileNumber())) {
             return true;
 
         }
@@ -45,8 +46,7 @@ public class AlahlyBank extends Bank {
     @Override
     public void deposit( double amount){
 
-        BankAPI bankAPI = new BankAPI("https://alahlyapi.service.com/");
-        bankAPI.deposite(amount, this.getBankAccountNumber(),this.getMobileNumber());
+        this.getBankAPI().deposit(amount, this.getBankAccountNumber(),this.getMobileNumber());
     }
 
 }

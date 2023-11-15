@@ -1,28 +1,27 @@
 package UserData;
 
-import UserAuthentication.BankAPI;
+import API.MisrBankAPI;
 
 public class MisrBank extends Bank{
     public MisrBank() {
-        super();
+        super(" " , "Misr");
+        this.setBankAPI(new MisrBankAPI("https://misrapi.service.com/"));
     }
 
-    public MisrBank(String BankAccountNumber) {
-        super(BankAccountNumber);
+    public MisrBank(String bankAccountNumber) {
+        super(bankAccountNumber , "MisrBank");
     }
 
     @Override
     public double inquireBalance() {
 
-        BankAPI bankAPI = new BankAPI("https://misrapi.service.com/");
-        return bankAPI.inquireBalance(this.getBankAccountNumber(),this.getMobileNumber());
+        return this.getBankAPI().inquireBalance(this.getBankAccountNumber(),this.getMobileNumber());
     }
 
     @Override
     public boolean withdraw(double amount) {
 
-        BankAPI bankAPI = new BankAPI("https://misrapi.service.com/");
-        if (bankAPI.withdraw(amount, this.getBankAccountNumber(), this.getMobileNumber())) {
+        if (this.getBankAPI().withdraw(amount, this.getBankAccountNumber(), this.getMobileNumber())) {
             return true;
 
         }
@@ -32,8 +31,7 @@ public class MisrBank extends Bank{
     @Override
     public void deposit( double amount){
 
-        BankAPI bankAPI = new BankAPI("https://misrapi.service.com/");
-        bankAPI.deposite(amount, this.getBankAccountNumber(), this.getMobileNumber());
+        this.getBankAPI().deposit(amount, this.getBankAccountNumber(), this.getMobileNumber());
     }
 
 
@@ -41,8 +39,7 @@ public class MisrBank extends Bank{
     @Override
     public boolean verifyAccount() {
 
-        BankAPI bankAPI = new BankAPI("https://misrapi.service.com/");
-        if (bankAPI.verifyBank(this.getBankAccountNumber(), this.getMobileNumber())) {
+        if (this.getBankAPI().verifyBank(this.getBankAccountNumber())) {
             return true;
         }
 
