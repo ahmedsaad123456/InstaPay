@@ -58,6 +58,15 @@ public class UserDataBase {
         return null;
     }
 
+    public User getUserByInstaAccount(String instaAccount) {
+        for (User user : users) {
+            if (user.getInstapayAcoount().equals(instaAccount)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
     public boolean updateUser(User user) {
         for (User u : users) {
             if (u.getUsername().equals(user.getUsername())) {

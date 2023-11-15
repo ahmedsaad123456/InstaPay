@@ -30,13 +30,15 @@ public class Electricity extends Bill {
         electricityBillAPI.setURL("https://api-service.com/");
         Electricity bill = electricityBillAPI.getBill();
 
+        this.setAmount(bill.getAmount());
+
         System.out.println("Electricity bill created for user: " + getUser().getUsername());
         System.out.println("Company: " + bill.getCompanyName());
         System.out.println("Amount: $" + bill.getAmount());
         System.out.println("Provider: " + bill.electricityProvider);
         System.out.println("Voltage Type: " + bill.voltageType);
         System.out.println("Consumption: " + bill.electricityConsumption);
-        bill.deductingFromAccount();
+        deductingFromAccount();
     }
 
 

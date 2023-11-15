@@ -25,13 +25,16 @@ public class Water extends Bill {
         waterBillAPI.setURL("https://api-service.com/");
         Water bill = waterBillAPI.getBill();
 
+
+        this.setAmount(bill.getAmount());
+
         System.out.println("Water bill created for user: " + getUser().getUsername());
         System.out.println("Company: " + bill.getCompanyName());
         System.out.println("Amount: $" + bill.getAmount());
         System.out.println("Provider: " + bill.waterProvider);
         System.out.println("Meter Size: " + bill.meterSize);
         System.out.println("Consumption: " + bill.waterConsumption);
-        bill.deductingFromAccount();
+        deductingFromAccount();
 
     }
 }

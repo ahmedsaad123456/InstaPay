@@ -1,4 +1,8 @@
 
+import TransactionManagment.Transaction;
+import TransactionManagment.TransactionToBank;
+import TransactionManagment.TransactionToInstaAccount;
+import TransactionManagment.TransactionToWallet;
 import UserAuthentication.*;
 import UserData.BankUser;
 import UserData.User;
@@ -7,8 +11,7 @@ import BillManagment.*;
 
 import java.util.Scanner;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+
 public class instapaySystem {
 
 
@@ -18,37 +21,44 @@ public class instapaySystem {
 
         Scanner scanner = new Scanner(System.in);
 
-        int choice;
+        int choice=0 , option=0;
         boolean isLoggedIn = false; // Flag to track if the user is logged in
 
         do {
             // Display the login menu if the user is not logged in
             if (!isLoggedIn) {
+                System.out.println("----------------------------------------------------------------------------------------");
                 System.out.println("Login Menu:");
                 System.out.println("1. Sign up");
                 System.out.println("2. Sign in");
                 System.out.println("3. Exit");
-                System.out.print("Choose an option (1-3): ");
+                System.out.println("Choose an option (1-3): ");
+                System.out.println("----------------------------------------------------------------------------------------");
+                choice = scanner.nextInt();
+
             } else {
                 // Display the main menu if the user is logged in
                 user.loadProfile();
+                System.out.println("----------------------------------------------------------------------------------------");
                 System.out.println("Main Menu:");
                 System.out.println("1. Inquire Balance");
                 System.out.println("2. Pay Bill");
                 System.out.println("3. Transfer Money");
                 System.out.println("4. Logout");
-                System.out.print("Choose an option (1-4): ");
+                System.out.println("Choose an option (1-4): ");
+                System.out.println("----------------------------------------------------------------------------------------");
+
+                option = scanner.nextInt();
             }
 
             // Read the user's choice
-            choice = scanner.nextInt();
 
             // Process the user's choice based on login status
             if (!isLoggedIn) {
                 // If not logged in, process login menu choices
                 switch (choice) {
                     case 1:
-                        user = manageSignup(user);
+                        user = manageSignup();
                         if(user != null){
                             isLoggedIn = true;
                         }
@@ -67,18 +77,19 @@ public class instapaySystem {
                 }
             } else {
                 // If logged in, process main menu choices
-                switch (choice) {
+                switch (option) {
                     case 1:
-                        System.out.println("You chose: Inquire Balance");
+                        System.out.println("your balance : " + user.getAccount().inquireBalance());
                         // Add logic for inquiring balance here
                         break;
                     case 2:
+
                         System.out.println("You chose: Pay Bill");
+
                         payBill(user);
                         break;
                     case 3:
-                        System.out.println("You chose: Transfer Money");
-                        // Add logic for transferring money here
+                        transfer(user);
                         break;
                     case 4:
                         System.out.println("Logging out. Goodbye!");
@@ -95,18 +106,21 @@ public class instapaySystem {
 
     }
 
-    public static User manageSignup(User user) {
+    public static User manageSignup() {
         Scanner scanner = new Scanner(System.in);
 
         Registration r;
 
+        System.out.println("----------------------------------------------------------------------------------------");
         System.out.println("Choose the type of registration:");
         System.out.println("1. Bank");
         System.out.println("2. Wallet");
-        System.out.print("Enter your choice (1 or 2): ");
+        System.out.println("Enter your choice (1 or 2): ");
+        System.out.println("----------------------------------------------------------------------------------------");
 
         int registrationType = scanner.nextInt();
 
+        User user;
         if (registrationType == 1) {
             r = new BankRegistration();
             user = new BankUser();
@@ -164,28 +178,67 @@ public class instapaySystem {
 
     public static void payBill(User user) {
         Scanner scanner = new Scanner(System.in);
-        Bill bill;
+        Bill bill = null;
 
-        System.out.println("Choose the type of bill:");
+        System.out.println("----------------------------------------------------------------------------------------");
+        System.out.println("write the type of bill the you want:");
         System.out.println("1. Electricity");
         System.out.println("2. Water");
         System.out.println("3. Gas");
-        System.out.print("Enter your choice (1 or 2 or 3): ");
+        System.out.println("----------------------------------------------------------------------------------------");
 
-        int billType = scanner.nextInt();
-        if (billType == 1) {
-            bill = new Electricity();
-            bill.setUser(user);
-            bill.createBill();
-        } else if (billType == 2) {
-            bill = new Water();
-            bill.setUser(user);
-            bill.createBill();
-        } else if (billType == 3) {
-            bill = new Gas();
+
+        String billType = scanner.nextLine();
+        BillFactory f = new BillFactory();
+        bill = f.createBill(billType);
+        if(bill != null){
+
             bill.setUser(user);
             bill.createBill();
         }
+        else{
+            System.out.println("wrong input");
+        }
+    }
+
+    public static void transfer(User user){
+        int option = user.loadTransactionMenu();
+        Scanner scanner = new Scanner(System.in);
+        int choose = scanner.nextInt();
+        if(choose == 1){
+            System.out.println("enter the amount : ");
+            int amount = scanner.nextInt();
+            Transaction  t = new TransactionToWallet(user , amount);
+            if(t.transfer()){
+                System.out.println("Transaction done! ");
+            }
+            else {
+                System.out.println("Transaction failure! ");
+            }
+        } else if (choose == 2){
+            System.out.println("enter the amount : ");
+            int amount = scanner.nextInt();
+            Transaction  t = new TransactionToInstaAccount(user , amount);
+            if(t.transfer()){
+                System.out.println("Transaction done! ");
+            }
+            else {
+                System.out.println("Transaction failure! ");
+            }
+
+        } else if (choose == 3 && option==3) {
+            System.out.println("enter the amount : ");
+            int amount = scanner.nextInt();
+            Transaction  t = new TransactionToBank(user , amount);
+            if(t.transfer()){
+                System.out.println("Transaction done! ");
+            }
+            else {
+                System.out.println("Transaction failure! ");
+            }
+        }
+
+
     }
 
 }

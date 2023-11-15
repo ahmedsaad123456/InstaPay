@@ -5,7 +5,7 @@ import API.BillAPI;
 public abstract class Bill {
     private double amount;
     private String companyName;
-    private User user;
+    private User user = null;
 
     public Bill() {
         this.amount = 0.0;
@@ -29,6 +29,10 @@ public abstract class Bill {
     }
     public void setUser(User u) {
         user = u;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public abstract void createBill();

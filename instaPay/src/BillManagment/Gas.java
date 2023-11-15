@@ -29,12 +29,14 @@ public class Gas extends Bill {
         gasBillAPI.setURL("https://api-service.com/");
         Gas bill = gasBillAPI.getBill();
 
+        this.setAmount(bill.getAmount());
+
         System.out.println("Gas bill created for user: " + getUser().getUsername());
         System.out.println("Company: " + bill.getCompanyName());
         System.out.println("Amount: $" + bill.getAmount());
         System.out.println("Provider: " + bill.gasProvider);
         System.out.println("Connection Type: " + bill.connectionType);
         System.out.println("Consumption: " + bill.gasConsumption);
-        bill.deductingFromAccount();
+        deductingFromAccount();
     }
 }
