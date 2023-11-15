@@ -25,5 +25,5 @@ public abstract class BankAPI {
 
     public abstract boolean withdraw(double b , String bankNumber ,String mobileNumber);
 
-    public abstract void deposit(double b , String bankNumber , String mobileNumber);
+    public abstract void deposit(double b , String bankNumber);
 }
