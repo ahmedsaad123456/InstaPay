@@ -194,6 +194,7 @@ public class instapaySystem {
         BillFactory f = new BillFactory();
         bill = f.createBill(billType);
         if(bill != null){
+            System.out.println("Enter the num of receipt:");
             String numberOfReceipts = scanner.next();
             bill.setUser(user);
             bill.createBill(numberOfReceipts);
@@ -260,7 +261,7 @@ public class instapaySystem {
 
         Account a2 = new CIBWallet("01100913553");
 
-        User u2 = new WalletUser("ali " , "123789456" , "ali@insta.com" ,a2 );
+        User u2 = new WalletUser("ali" , "123789456" , "ali@insta.com" ,a2 );
 
         db.saveUser(u2);
 
