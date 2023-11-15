@@ -11,16 +11,10 @@ public class Login {
 
         UserDataBase db = new UserDataBase();
 
-        if(!db.checkUsername(username)){//check if username exists
-            System.out.println("Username does not exist");
-            return false;
-        }
-
         if(!db.checkPassword(username , password)){
 
             System.out.println("invalid password");
             return false;
-
         }
 
         return true;
