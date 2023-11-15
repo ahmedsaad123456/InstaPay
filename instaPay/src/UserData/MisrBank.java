@@ -40,7 +40,7 @@ public class MisrBank extends Bank{
     @Override
     public void deposit( double amount){
 
-        this.getBankAPI().deposit(amount, this.getBankAccountNumber(), this.getMobileNumber());
+        this.getBankAPI().deposit(amount, this.getBankAccountNumber());
     }
 
 
