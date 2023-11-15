@@ -48,7 +48,6 @@ public class UserDataBase {
         users.add(user);
     }
 
-    //------------------------------------------------------------------------------------
     public User getUser(String username) {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
@@ -61,47 +60,6 @@ public class UserDataBase {
     public User getUserByInstaAccount(String instaAccount) {
         for (User user : users) {
             if (user.getInstapayAcoount().equals(instaAccount)) {
-                return user;
-            }
-        }
-        return null;
-    }
-
-    public boolean updateUser(User user) {
-        for (User u : users) {
-            if (u.getUsername().equals(user.getUsername())) {
-                u.setInstapayAcoount(user.getInstapayAcoount());
-                u.setPassword(user.getPassword());
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean deleteUser(String username) {
-        for (User user : users) {
-            if (user.getUsername().equals(username)) {
-                users.remove(user);
-                return true;
-            }
-        }
-        return false;
-    }
-
-//------------------------------------------------------------------------------------
-    public User loadInstapayUser(String instapayAccount) {
-        for (User user : users) {
-            if (user.getInstapayAcoount().equals(instapayAccount)) {
-                return user;
-            }
-        }
-        return null;
-    }
-
-
-    public User loadUser(String name){
-        for (User user : users) {
-            if (user.getUsername().equals(name)) {
                 return user;
             }
         }
