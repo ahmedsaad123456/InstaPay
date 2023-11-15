@@ -14,10 +14,11 @@ public class WaterBillAPI extends BillAPI{
 
         //dummy data this data will replace with actual data when perform Water API
         double amount = 30.0;
+        String companyName = "Misr";
         String waterProvider = "AquaCorp";
         String meterSize = "5 inches";
         String waterConsumption = "50 gallons";
 
-        return new Water(amount, waterProvider, meterSize, waterConsumption);
+        return new Water(amount, companyName, waterProvider, meterSize, waterConsumption);
     }
 }

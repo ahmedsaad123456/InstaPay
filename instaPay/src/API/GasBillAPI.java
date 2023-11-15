@@ -15,10 +15,11 @@ public class GasBillAPI extends BillAPI{
 
         //dummy data this data will replace with actual data when perform Gas API
         double amount = 50.0;
+        String companyName = "Misr";
         String gasProvider = "GasCorp";
         String connectionType = "Natural Gas";
         String gasConsumption = "30 m3";
 
-        return new Gas(amount, gasProvider, connectionType, gasConsumption);
+        return new Gas(amount, companyName,gasProvider, connectionType, gasConsumption);
     }
 }

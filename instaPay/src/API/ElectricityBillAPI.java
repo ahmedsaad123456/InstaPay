@@ -16,10 +16,11 @@ public class ElectricityBillAPI extends BillAPI{
 
         //dummy data this data will replace with actual data when perform Electricity API
         double amount = 100.0;
+        String companyName = "Misr";
         String electricityProvider = "PowerCo";
         String voltageType = "220V";
         String electricityConsumption = "150 kWh";
 
-        return new Electricity(amount, electricityProvider, voltageType, electricityConsumption);
+        return new Electricity(amount, companyName, electricityProvider, voltageType, electricityConsumption);
     }
 }
