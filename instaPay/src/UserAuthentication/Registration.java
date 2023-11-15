@@ -113,6 +113,7 @@ public abstract class Registration {
                 if(c != 'y'){
                     return false;
                 }
+                isNotMobileNumber = true;
             }
             else {
                 invaildInfo = false;
