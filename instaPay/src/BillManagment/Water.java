@@ -20,7 +20,7 @@ public class Water extends Bill {
     }
 
     @Override
-    public void createBill() {
+    public void createBill(String numberOfReceipt) {
         WaterBillAPI waterBillAPI = new WaterBillAPI();
         waterBillAPI.setURL("https://api-service.com/");
         Water bill = waterBillAPI.getBill();

@@ -25,7 +25,7 @@ public class Electricity extends Bill {
 
 
     @Override
-    public void createBill() {
+    public void createBill(String numberOfReceipt) {
         ElectricityBillAPI electricityBillAPI = new ElectricityBillAPI();
         electricityBillAPI.setURL("https://api-service.com/");
         Electricity bill = electricityBillAPI.getBill();

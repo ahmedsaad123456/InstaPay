@@ -35,7 +35,7 @@ public abstract class Bill {
         this.amount = amount;
     }
 
-    public abstract void createBill();
+    public abstract void createBill(String numberOfReceipt);
 
     public boolean deductingFromAccount(){
         if(user.getAccount().withdraw(amount)) {
