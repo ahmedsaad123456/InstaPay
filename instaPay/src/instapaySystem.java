@@ -98,7 +98,7 @@ public class instapaySystem {
     public static User manageSignup(User user) {
         Scanner scanner = new Scanner(System.in);
 
-        Registration r = new AlahlyBankRegistration();
+        Registration r;
 
         System.out.println("Choose the type of registration:");
         System.out.println("1. Bank");
@@ -108,76 +108,26 @@ public class instapaySystem {
         int registrationType = scanner.nextInt();
 
         if (registrationType == 1) {
-            // Bank registration
+            r = new BankRegistration();
             user = new BankUser();
-            System.out.println("Choose the bank:");
-            System.out.println("1. Alahly");
-            System.out.println("2. Misr");
-            System.out.print("Enter your choice (1 or 2): ");
-
-            int bankChoice = scanner.nextInt();
-
-            // Set user information based on bank choice
-            if (bankChoice == 1) {
-                r = new AlahlyBankRegistration();
-                if(r.signUp(user)){
-                    return user;
-                }
-                else {
-                    return null;
-                }
-            } else if (bankChoice == 2) {
-                r = new MisrBankRegistration();
-                if(r.signUp(user)){
-                    return user;
-                }
-                else {
-                    return null;
-                }
-            } else {
-                System.out.println("Invalid bank choice.");
+            if(r.signUp(user)){
+                return user;
+            }
+            else {
                 return null;
             }
+
         } else if (registrationType == 2) {
-            // Wallet registration
+            r = new WalletRegistration();
             user = new WalletUser();
-            System.out.println("Choose the wallet provider:");
-            System.out.println("1. Vodafone Cash");
-            System.out.println("2. Fawry");
-            System.out.println("3. CIB Wallet");
-            System.out.print("Enter your choice (1, 2, or 3): ");
-
-            int walletChoice = scanner.nextInt();
-
-            // Set user information based on wallet choice
-            if (walletChoice == 1) {
-                r = new VodafoneRegistration();
-                if(r.signUp(user)){
-                    return user;
-                }
-                else {
-                    return null;
-                }
-            } else if (walletChoice == 2) {
-                r = new FawryWalletRegistration();
-                if(r.signUp(user)){
-                    return user;
-                }
-                else {
-                    return null;
-                }
-            } else if (walletChoice == 3) {
-                r = new CIBWalletRegistration();
-                if(r.signUp(user)){
-                    return user;
-                }
-                else {
-                    return null;
-                }
-            } else {
-                System.out.println("Invalid wallet choice.");
+            if (r.signUp(user)){
+                return user;
+            }
+            else {
                 return null;
             }
+
+
         } else {
             System.out.println("Invalid registration type.");
             return null;

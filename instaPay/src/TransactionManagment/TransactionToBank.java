@@ -9,29 +9,34 @@ public class TransactionToBank extends Transaction {
         super(user, amount);
     }
 
-    private Account createAccount(String bankName, String bankNumber){
-        switch (bankName) {
-            case "Misr Bank" -> {
-                return new MisrBank(bankNumber);
-            }
-            case "Alahly Bank" -> {
-                return new AlahlyBank(bankNumber);
-            }
-        }
-        throw new Error("Invalid Bank");
-    }
-    public boolean transfer(){
+    private Account createAccount(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter Bank Name: ");
+        System.out.println("Enter the name of your bank from the following");
+        System.out.println("( Alahly   ,  Misr  )");
         String bankName = scanner.nextLine();
+
+        Bank bank = new BankFactory().createBank(bankName);
+
+        if (bank == null) {
+            System.out.println("invalid provider name");
+            System.out.println("Enter the name of your provider from the following");
+            System.out.println("( Vodafone   ,  CIB   , Fawry  )");
+            scanner.nextLine();
+            bank = new BankFactory().createBank(bankName);
+        }
         System.out.println("Please enter Bank Number of the receiver: ");
         String bankNumber = scanner.nextLine();
-        Account account = createAccount(bankName, bankNumber);
+        bank.setBankAccountNumber(bankNumber);
+        return bank;
+    }
+    public boolean transfer(){
+        Account account = createAccount();
         if(account.verifyAccount()){
             senderUser.getAccount().withdraw(amount);
             account.deposit(amount);
             return true;
         }
+        System.out.println("Invalid account");
         return false;
     }
 }
