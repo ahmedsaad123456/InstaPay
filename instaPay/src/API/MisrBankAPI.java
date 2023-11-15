@@ -30,7 +30,7 @@ public class MisrBankAPI extends BankAPI{
     }
 
     @Override
-    public void deposit(double b , String bankNumber ,String mobileNumber){
+    public void deposit(double b , String bankNumber){
         balance = balance +b;
     }
 }
