@@ -3,6 +3,7 @@ import UserAuthentication.*;
 import UserData.BankUser;
 import UserData.User;
 import UserData.WalletUser;
+import BillManagment.*;
 
 import java.util.Scanner;
 
@@ -73,7 +74,7 @@ public class instapaySystem {
                         break;
                     case 2:
                         System.out.println("You chose: Pay Bill");
-                        // Add logic for paying bill here
+                        payBill(user);
                         break;
                     case 3:
                         System.out.println("You chose: Transfer Money");
@@ -160,4 +161,31 @@ public class instapaySystem {
 
 
     }
+
+    public static void payBill(User user) {
+        Scanner scanner = new Scanner(System.in);
+        Bill bill;
+
+        System.out.println("Choose the type of bill:");
+        System.out.println("1. Electricity");
+        System.out.println("2. Water");
+        System.out.println("3. Gas");
+        System.out.print("Enter your choice (1 or 2 or 3): ");
+
+        int billType = scanner.nextInt();
+        if (billType == 1) {
+            bill = new Electricity();
+            bill.setUser(user);
+            bill.createBill();
+        } else if (billType == 2) {
+            bill = new Water();
+            bill.setUser(user);
+            bill.createBill();
+        } else if (billType == 3) {
+            bill = new Gas();
+            bill.setUser(user);
+            bill.createBill();
+        }
+    }
+
 }

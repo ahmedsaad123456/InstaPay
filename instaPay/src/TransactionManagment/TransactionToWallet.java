@@ -9,6 +9,7 @@ public class TransactionToWallet extends Transaction {
         super(user, amount);
     }
 
+
     private Account createAccount() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the name of your provider from the following");
