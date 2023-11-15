@@ -20,7 +20,7 @@ public class Electricity extends Bill {
 
     @Override
     public void createBill() {
-        Electricity bill = BillAPI.getElectricityBill();
+        Electricity bill = ElectricityBillAPI.getElectricityBill();
 
         System.out.println("Electricity bill created for user: " + getUser().getUsername());
         System.out.println("Amount: $" + bill.getAmount());

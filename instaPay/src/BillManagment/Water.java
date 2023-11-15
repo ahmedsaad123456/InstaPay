@@ -15,7 +15,7 @@ public class Water extends Bill {
 
     @Override
     public void createBill() {
-        Water bill = BillAPI.getWaterBill();
+        Water bill =  WaterBillAPI.getWaterBill();
 
         System.out.println("Water bill created for user: " + getUser().getUsername());
         System.out.println("Amount: $" + bill.getAmount());

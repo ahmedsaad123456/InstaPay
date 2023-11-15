@@ -19,7 +19,8 @@ public class Gas extends Bill {
 
     @Override
     public void createBill() {
-        Gas bill = BillAPI.getGasBill();
+        Gas bill = GasBillAPI.getGasBill();
+
         System.out.println("Gas bill created for user: " + getUser().getUsername());
         System.out.println("Amount: $" + bill.getAmount());
         System.out.println("Provider: " + bill.gasProvider);
