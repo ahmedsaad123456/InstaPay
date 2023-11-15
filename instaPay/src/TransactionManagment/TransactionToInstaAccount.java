@@ -19,6 +19,7 @@ public class TransactionToInstaAccount extends Transaction {
             account.deposit(amount);
             return true;
         }
+        System.out.println("Invalid account");
         return false;
     }
     private Account createAccount(String instapayAccount){

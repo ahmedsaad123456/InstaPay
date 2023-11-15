@@ -37,6 +37,7 @@ public class TransactionToWallet extends Transaction {
             account.deposit(amount);
             return true;
         }
+        System.out.println("Invalid account");
         return false;
     }
 }
