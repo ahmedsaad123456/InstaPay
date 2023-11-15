@@ -10,23 +10,18 @@ public class TransactionToWallet extends Transaction {
     }
 
     private Account createAccount(String walletName, String mobileNumber) {
-        if(walletName == "Vodafone Cash"){
-            return new VodafoneCashWallet(mobileNumber);
-        }
-        else if(walletName == "Fawry Wallet"){
-            return new FawryWallet(mobileNumber);
-        }
-        else if(walletName == "CIB Wallet"){
-            return new CIBWallet(mobileNumber);
+        switch (walletName) {
+            case "Vodafone Cash" -> {
+                return new TelecommunicationCompanies(mobileNumber);
+            }
+            case "Fawry Wallet" -> {
+                return new ElectronicPaymentCompanies(mobileNumber);
+            }
+            case "CIB Wallet" -> {
+                return new BanksProvideWallets(mobileNumber);
+            }
         }
         throw new Error("Invalid Wallet");
-    }
-
-    private boolean checkValidity(Account account) {
-//        if(account.checkAccount()){
-//            return true;
-//        }
-        return false;
     }
     public boolean transfer(){
         Scanner scanner = new Scanner(System.in);
@@ -35,7 +30,7 @@ public class TransactionToWallet extends Transaction {
         System.out.println("Please enter mobile number of the receiver: ");
         String mobile = scanner.nextLine();
         Account account = createAccount(walletName, mobile);
-        if(checkValidity(account)){
+        if(account.verifyAccount()){
             senderUser.getAccount().withdraw(amount);
             account.deposit(amount);
             return true;

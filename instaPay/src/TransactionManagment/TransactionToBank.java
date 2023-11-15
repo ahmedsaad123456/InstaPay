@@ -10,19 +10,15 @@ public class TransactionToBank extends Transaction {
     }
 
     private Account createAccount(String bankName, String bankNumber){
-        if(bankName == "Misr Bank"){
-            return new MisrBank(bankNumber);
-        }
-        else if(bankName == "Alahly Bank"){
-            return new AlahlyBank(bankNumber);
+        switch (bankName) {
+            case "Misr Bank" -> {
+                return new MisrBank(bankNumber);
+            }
+            case "Alahly Bank" -> {
+                return new AlahlyBank(bankNumber);
+            }
         }
         throw new Error("Invalid Bank");
-    }
-    private boolean checkValidity(Account account) {
-//        if(account.checkAccount()){
-//            return true;
-//        }
-        return false;
     }
     public boolean transfer(){
         Scanner scanner = new Scanner(System.in);
@@ -31,7 +27,7 @@ public class TransactionToBank extends Transaction {
         System.out.println("Please enter Bank Number of the receiver: ");
         String bankNumber = scanner.nextLine();
         Account account = createAccount(bankName, bankNumber);
-        if(checkValidity(account)){
+        if(account.verifyAccount()){
             senderUser.getAccount().withdraw(amount);
             account.deposit(amount);
             return true;
