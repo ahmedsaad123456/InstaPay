@@ -192,9 +192,9 @@ public class instapaySystem {
         BillFactory f = new BillFactory();
         bill = f.createBill(billType);
         if(bill != null){
-
+            String numberOfReceipts = scanner.next();
             bill.setUser(user);
-            bill.createBill();
+            bill.createBill(numberOfReceipts);
         }
         else{
             System.out.println("wrong input");

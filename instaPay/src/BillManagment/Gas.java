@@ -24,7 +24,7 @@ public class Gas extends Bill {
 
 
     @Override
-    public void createBill() {
+    public void createBill(String numberOfReceipt) {
         GasBillAPI gasBillAPI = new GasBillAPI();
         gasBillAPI.setURL("https://api-service.com/");
         Gas bill = gasBillAPI.getBill();
