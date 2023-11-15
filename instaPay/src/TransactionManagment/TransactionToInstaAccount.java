@@ -22,7 +22,7 @@ public class TransactionToInstaAccount extends Transaction {
         return false;
     }
     private Account createAccount(String instapayAccount){
-        //TO DO
-        return new MisrBank();
+        UserDataBase userDataBase = new UserDataBase();
+        return userDataBase.getUser(instapayAccount).getAccount();
     }
 }
