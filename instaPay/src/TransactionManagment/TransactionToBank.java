@@ -9,7 +9,7 @@ public class TransactionToBank extends Transaction {
         super(user, amount);
     }
 
-    private Account createAccount(){
+    private Bank createAccount(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the name of your bank from the following");
         System.out.println("( Alahly   ,  Misr  )");
@@ -17,7 +17,7 @@ public class TransactionToBank extends Transaction {
 
         Bank bank = new BankFactory().createBank(bankName);
 
-        if (bank == null) {
+        while (bank == null) {
             System.out.println("invalid provider name");
             System.out.println("Enter the name of receiver's provider from the following");
             System.out.println("( Vodafone   ,  CIB   , Fawry  )");
@@ -34,7 +34,11 @@ public class TransactionToBank extends Transaction {
             System.out.println("Insufficient balance");
             return false;
         }
-        Account account = createAccount();
+        Bank account = createAccount();
+        if(account.getBankAccountNumber().equals(((Bank) senderUser.getAccount()).getBankAccountNumber())){
+            System.out.println("Can't transfer money to yourself");
+            return false;
+        }
         if(account.verifyAccount()){
             senderUser.getAccount().withdraw(amount);
             account.deposit(amount);

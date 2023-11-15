@@ -18,7 +18,7 @@ public class TransactionToWallet extends Transaction {
 
         Wallet wallet = new WalletFactory().createWallet(WalletName);
 
-        if (wallet == null) {
+        while (wallet == null) {
             System.out.println("invalid provider name");
             System.out.println("Enter the name of receiver's provider from the following");
             System.out.println("( Vodafone   ,  CIB   , Fawry  )");
@@ -36,6 +36,10 @@ public class TransactionToWallet extends Transaction {
             return false;
         }
         Account account = createAccount();
+        if(account.getMobileNumber().equals(senderUser.getAccount().getMobileNumber())){
+            System.out.println("Can't transfer money to yourself");
+            return false;
+        }
         if(account.verifyAccount()){
             senderUser.getAccount().withdraw(amount);
             account.deposit(amount);
