@@ -9,27 +9,28 @@ public class TransactionToWallet extends Transaction {
         super(user, amount);
     }
 
-    private Account createAccount(String walletName, String mobileNumber) {
-        switch (walletName) {
-            case "Vodafone Cash" -> {
-                return new VodafoneCashWallet(mobileNumber);
-            }
-            case "Fawry Wallet" -> {
-                return new FawryWallet(mobileNumber);
-            }
-            case "CIB Wallet" -> {
-                return new CIBWallet(mobileNumber);
-            }
+    private Account createAccount() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the name of your provider from the following");
+        System.out.println("( Vodafone   ,  CIB   , Fawry  )");
+        String WalletName = scanner.nextLine();
+
+        Wallet wallet = new WalletFactory().createWallet(WalletName);
+
+        if (wallet == null) {
+            System.out.println("invalid provider name");
+            System.out.println("Enter the name of your provider from the following");
+            System.out.println("( Vodafone   ,  CIB   , Fawry  )");
+            scanner.nextLine();
+            wallet = new WalletFactory().createWallet(WalletName);
         }
-        throw new Error("Invalid Wallet");
+        System.out.println("Please enter mobile number of the receiver: ");
+        String walletNumber = scanner.nextLine();
+        wallet.setMobileNumber(walletNumber);
+        return wallet;
     }
     public boolean transfer(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter wallet name: ");
-        String walletName = scanner.nextLine();
-        System.out.println("Please enter mobile number of the receiver: ");
-        String mobile = scanner.nextLine();
-        Account account = createAccount(walletName, mobile);
+        Account account = createAccount();
         if(account.verifyAccount()){
             senderUser.getAccount().withdraw(amount);
             account.deposit(amount);
