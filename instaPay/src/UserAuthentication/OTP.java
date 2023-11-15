@@ -6,7 +6,7 @@ public class OTP {
 
     public OTP(){
 
-        otp = (int) (Math.random()*9000);
+        otp = (int) (Math.random()*8999)+1000;
 
     }
 
