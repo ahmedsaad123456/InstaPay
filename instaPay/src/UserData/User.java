@@ -4,26 +4,23 @@ import BillManagment.Bill;
 
 import java.util.ArrayList;
 
-public class User {
+public abstract class User {
     private Account account;
     private String username;
     private String password;
-    private String mobileNumber;
     private String instapayAcoount;
 
 
     public User() {
         username = "";
         password = "";
-        mobileNumber = "";
         instapayAcoount = "";
         account = null;
     }
 
-    public User(String username, String password, String mobileNumber, String instapayAcoountName, Account acc) {
+    public User(String username, String password, String instapayAcoountName, Account acc) {
         this.username = username;
         this.password = password;
-        this.mobileNumber = mobileNumber;
         this.instapayAcoount = instapayAcoountName;
         this.account = acc;
     }
@@ -41,9 +38,7 @@ public class User {
 
     public void setPassword(String password) {this.password = password;}
 
-    public String getMobileNumber() {return mobileNumber;}
 
-    public void setMobileNumber(String mobileNumber) {this.mobileNumber = mobileNumber;}
 
     public String getInstapayAcoount() {
         return instapayAcoount;
@@ -52,4 +47,12 @@ public class User {
     public void setInstapayAcoount(String instapayAcoountName) {
         this.instapayAcoount = instapayAcoountName;
     }
+
+    public void loadProfile(){
+        System.out.println("Username : "+ username);
+        System.out.println("instapay Account : " + instapayAcoount);
+        System.out.println("Mobile Number : " + getAccount().getMobileNumber());
+        loadAccountProfile();
+    }
+    public abstract void loadAccountProfile();
 }
