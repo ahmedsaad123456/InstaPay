@@ -2,7 +2,6 @@ package TransactionManagment;
 
 import UserData.*;
 
-import java.util.Map;
 import java.util.Scanner;
 
 public class TransactionToWallet extends Transaction {
@@ -12,13 +11,13 @@ public class TransactionToWallet extends Transaction {
 
     private Account createAccount(String walletName, String mobileNumber) {
         if(walletName == "Vodafone Cash"){
-            return new TelecommunicationCompanies(mobileNumber);
+            return new VodafoneCashWallet(mobileNumber);
         }
         else if(walletName == "Fawry Wallet"){
-            return new ElectronicPaymentCompanies(mobileNumber);
+            return new FawryWallet(mobileNumber);
         }
         else if(walletName == "CIB Wallet"){
-            return new BanksProvideWallets(mobileNumber);
+            return new CIBWallet(mobileNumber);
         }
         throw new Error("Invalid Wallet");
     }

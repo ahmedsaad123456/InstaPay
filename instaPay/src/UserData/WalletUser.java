@@ -5,8 +5,13 @@ public class WalletUser extends User {
         super();
     }
 
-    public WalletUser(String username, String password, String mobileNumber, String instapayAcoountName, Account acc) {
-        super(username, password, mobileNumber, instapayAcoountName, acc);
+    public WalletUser(String username, String password, String instapayAcoountName, Account acc) {
+        super(username, password,  instapayAcoountName, acc);
     }
 
+    @Override
+    public void loadAccountProfile() {
+        Wallet w = (Wallet) this.getAccount();
+        System.out.println("Wallet Provider : " + w.getWalletProvider());
+    }
 }

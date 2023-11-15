@@ -1,18 +1,30 @@
 package UserData;
 
+import API.WalletAPI;
+
 public abstract class Wallet extends Account{
-    private String walletName;
+    private String walletProvider;
+
+    private WalletAPI walletAPI;
 
     public Wallet() {
-        walletName = "";
+        walletProvider = "";
     }
-    public Wallet(String walletName) {
-        this.walletName = walletName;
+    public Wallet(String walletProvider) {
+        this.walletProvider = walletProvider;
     }
 
-    public String getWalletName() {return walletName;}
+    public String getWalletProvider() {return walletProvider;}
 
-    public void setWalletName(String walletName) {this.walletName = walletName;}
+    public void setWalletProvider(String walletName) {this.walletProvider = walletName;}
+
+    public void setWalletAPI(WalletAPI walletAPI) {
+        this.walletAPI = walletAPI;
+    }
+
+    public WalletAPI getWalletAPI() {
+        return walletAPI;
+    }
 
     public abstract boolean verifyAccount();
 

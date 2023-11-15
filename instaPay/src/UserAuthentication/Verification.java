@@ -1,6 +1,7 @@
 package UserAuthentication;
 
 import UserData.User;
+import UserData.UserDataBase;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -19,9 +20,8 @@ public class Verification {
     public boolean verifyUsername(String username)
     {
 
-        // UserDB UDB;
-        //return UDB.uniqueUsername(username);
-        return true;
+        UserDataBase db = new UserDataBase() ;
+        return db.uniqueUsername(username);
     }
     /**
      * check if the instaAccount is unique of not
@@ -32,9 +32,9 @@ public class Verification {
     public boolean verifyInstaAccount(String instaAccount)
     {
 
-        // UserDB UDB;
-        //return UDB.uniqueInstaAccount(instaAccount);
-        return true;
+
+        UserDataBase db = new UserDataBase() ;
+        return db.uniqueInstapayAccount(instaAccount);
     }
     /**
      * check if the password is valid or not
@@ -44,7 +44,7 @@ public class Verification {
      */
     public boolean verifyPassword(String password){
         Pattern p = Pattern.compile("[0-9|a-z|A-Z|!|@|#|$|&|%]{8,16}");
-        while(!p.matcher(password).matches())
+        if(!p.matcher(password).matches())
         {
             System.out.println("----------------------------------------------------------------------------------------");
             System.out.println("password is invalid , please enter a valid password in the following format: ");
@@ -66,8 +66,15 @@ public class Verification {
      */
     public boolean verifyMobileNumber(String mobileNumber){
 
+        UserDataBase db = new UserDataBase() ;
+        if (!db.uniqueMobileNumber(mobileNumber)){
+            System.out.println("mobile number is used before");
+            return false;
+
+        }
+
         Pattern p = Pattern.compile("((011)|(010)|(012)|(015)){1}[0-9]{8}");
-        while (!p.matcher(mobileNumber).matches())
+        if (!p.matcher(mobileNumber).matches())
         {
             System.out.println("----------------------------------------------------------------------------------------");
             System.out.println("phone is invalid , please enter a valid phone in the following format: ");
