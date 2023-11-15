@@ -1,12 +1,11 @@
+package instapaySystem;
 
 import TransactionManagment.Transaction;
 import TransactionManagment.TransactionToBank;
 import TransactionManagment.TransactionToInstaAccount;
 import TransactionManagment.TransactionToWallet;
 import UserAuthentication.*;
-import UserData.BankUser;
-import UserData.User;
-import UserData.WalletUser;
+import UserData.*;
 import BillManagment.*;
 
 import java.util.Scanner;
@@ -16,6 +15,8 @@ public class instapaySystem {
 
 
     public static void main(String[] args) {
+
+        seeding();
 
         User user = new BankUser() ;
 
@@ -237,6 +238,31 @@ public class instapaySystem {
                 System.out.println("Transaction failure! ");
             }
         }
+
+
+    }
+
+    public static void seeding(){
+        UserDataBase db = new UserDataBase();
+
+        Account a = new AlahlyBank("14785698745236" , "01236987452");
+
+        User u = new BankUser("mhmd" , "12346579" , "mh@insta.com" , a);
+
+        db.saveUser(u);
+
+        Account a1 = new AlahlyBank("14785698745236" , "01045875698");
+
+        User u1 = new BankUser("ahmed" , "12346ahmd9" , "ahmed@insta.com" , a1);
+
+        db.saveUser(u1);
+
+        Account a2 = new CIBWallet("01100913553");
+
+        User u2 = new WalletUser("ali " , "123789456" , "ali@insta.com" ,a2 );
+
+        db.saveUser(u2);
+
 
 
     }
