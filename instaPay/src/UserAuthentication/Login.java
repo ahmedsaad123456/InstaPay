@@ -16,17 +16,11 @@ public class Login {
             return false;
         }
 
-        while(true){//check if password is correct
-            if(!db.checkPassword(username , password)){
-                char c;
+        if(!db.checkPassword(username , password)){
 
-                System.out.println("invalid password");
-                c = in.next().charAt(0);
-                in.nextLine();
+            System.out.println("invalid password");
+            return false;
 
-            } else {
-                break;
-            }
         }
 
         return true;
