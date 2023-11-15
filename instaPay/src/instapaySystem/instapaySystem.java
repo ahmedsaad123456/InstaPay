@@ -20,6 +20,7 @@ public class instapaySystem {
 
         User user = new BankUser() ;
 
+        
         Scanner scanner = new Scanner(System.in);
 
         int choice=0 , option=0;
@@ -159,7 +160,7 @@ public class instapaySystem {
             username = in.nextLine();
             System.out.println("enter password : ");
             password = in.nextLine();
-            if(!l.loginUser(username,  password)){
+            if(!l.loginUser(username,  password)){//check if username exists
                 char c;
                 System.out.println("Do you want to enter again ? y/n");
                 c = in.next().charAt(0);
