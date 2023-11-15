@@ -10,7 +10,16 @@ public class MisrBank extends Bank{
 
     public MisrBank(String bankAccountNumber) {
         super(bankAccountNumber , "MisrBank");
+        this.setBankAPI(new MisrBankAPI("https://misrapi.service.com/"));
+
     }
+
+    public MisrBank(String bankAccountNumber , String mobileNumber) {
+        super(bankAccountNumber , "MisrBank");
+        this.setBankAPI(new MisrBankAPI("https://misrapi.service.com/"));
+        this.setMobileNumber(mobileNumber);
+    }
+
 
     @Override
     public double inquireBalance() {

@@ -16,6 +16,12 @@ public class AlahlyBank extends Bank {
         this.setBankAPI(new AlahlyBankAPI("https://alahlyapi.service.com/"));
     }
 
+    public AlahlyBank(String bankAccountNumber , String mobileNumber) {
+        super(bankAccountNumber , "Alahly");
+        this.setBankAPI(new AlahlyBankAPI("https://alahlyapi.service.com/"));
+        this.setMobileNumber(mobileNumber);
+    }
+
     @Override
     public boolean verifyAccount() {
 
