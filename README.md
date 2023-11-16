@@ -101,9 +101,8 @@ We would like to thank the following contributors to this project:
 
 [Salma Abdelaziz](https://github.com/Salmaabdelaziz271).
 
+[Adham Khaled](https://github.com/Adham-K-Fahmy).
+
 Special thanks to everyone who has helped make this project better.
 
-
-
-[Adham Khaled](https://github.com/Adham-K-Fahmy).
 
