@@ -91,11 +91,19 @@ If you successfully sign in, you will have access to the main menu:
 
 ## Contributing
 
+We would like to thank the following contributors to this project:
+
+
+
 [Ahmed Saad](https://github.com/ahmedsaad123456).
 
 [Shahd Osama](https://github.com/shahdosama10).
 
 [Salma Abdelaziz](https://github.com/Salmaabdelaziz271).
+
+Special thanks to everyone who has helped make this project better.
+
+
 
 [Adham Khaled](https://github.com/Adham-K-Fahmy).
 
